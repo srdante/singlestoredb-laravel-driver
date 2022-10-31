@@ -41,6 +41,28 @@ trait ModifiesIndexes
     }
 
     /**
+     * @param  string|array  $columns
+     * @param  string|null  $name
+     * @param  string|null  $algorithm
+     * @return \Illuminate\Database\Schema\IndexDefinition
+     */
+    public function hashUnique($columns, $name = null, $algorithm = null)
+    {
+        return $this->indexCommand('hashUnique', $columns, $name, $algorithm);
+    }
+
+    /**
+     * @param  string|array  $columns
+     * @param  string|null  $name
+     * @param  string|null  $algorithm
+     * @return \Illuminate\Database\Schema\IndexDefinition
+     */
+    public function hashIndex($columns, $name = null, $algorithm = null)
+    {
+        return $this->indexCommand('hashIndex', $columns, $name, $algorithm);
+    }
+
+    /**
      * Recast the last fluent command into a different class,
      * which is helpful for IDE completion.
      *

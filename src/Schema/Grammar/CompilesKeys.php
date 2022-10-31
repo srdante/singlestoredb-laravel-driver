@@ -36,4 +36,14 @@ trait CompilesKeys
 
         return $compiled;
     }
+
+    public function compileHashIndex(Blueprint $blueprint, Fluent $command)
+    {
+        return "index {$command->name} ({$this->columnize($command->columns)}) using hash";
+    }
+
+    public function compileHashUnique(Blueprint $blueprint, Fluent $command)
+    {
+        return "unique {$command->name} ({$this->columnize($command->columns)}) using hash";
+    }
 }
